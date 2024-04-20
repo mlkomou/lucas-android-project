@@ -1,0 +1,50 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col size="2">
+        <ion-icon (click)="goBack()" name="chevron-back" style="font-size: 25px;"></ion-icon>
+      </ion-col>
+      <ion-col size="10">
+        <ion-title>Ajout de téléphone</ion-title>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div [formGroup]="phoneForm">
+    <ion-card mode="ios" style="padding: 15px">
+      <ion-input formControlName="name" label-placement="floating" label="Nom du téléphone"></ion-input>
+    </ion-card>
+
+    <ion-card mode="ios" style="padding: 15px">
+      <ion-textarea formControlName="description" label-placement="floating" label="Description du téléphone"></ion-textarea>
+    </ion-card>
+
+    <ion-button (click)="pickImage()" mode="ios" fill="outline" size="full" shape="round">Importer une photo
+    <ion-icon name="camera" style="margin-left: 20px;"></ion-icon>
+    </ion-button>
+
+    <input #imagePicker type="file" hidden="" (change)="fileChangeEvent($event)" />
+
+    <image-cropper
+      style="height: 300px;"
+      *ngIf="imageChangedEvent"
+      [imageChangedEvent]="imageChangedEvent"
+      [maintainAspectRatio]="true"
+      [aspectRatio]="4 / 4"
+      [imageQuality]="20"
+      [format]="'jpeg'"
+      (imageCropped)="imageCropped($event)"
+    ></image-cropper>
+
+    <div *ngIf="phone && !imageChangedEvent">
+      <img [src]="phone?.photo">
+    </div>
+  </div>
+
+  <ion-button (click)="savePhone()" size="full" mode="ios" shape="round">
+    Enregistrer
+    <ion-icon name="save" style="margin-left: 20px"></ion-icon>
+  </ion-button>
+</ion-content>

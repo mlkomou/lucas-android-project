@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Phone App</string>
+    <string name="title_activity_main">Phone App</string>
+    <string name="package_name">io.lucas.app</string>
+    <string name="custom_url_scheme">io.lucas.app</string>
+</resources>
