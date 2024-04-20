@@ -1,0 +1,7 @@
+{
+  "name": "commerce-crud",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
